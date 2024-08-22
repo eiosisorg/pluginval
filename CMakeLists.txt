@@ -93,12 +93,11 @@ if(PLUGINVAL_VST3_VALIDATOR)
     )
 endif()
 
-if (DEFINED ENV{VST2_SDK_DIR})
-    MESSAGE(STATUS "Building with VST2 SDK: $ENV{VST2_SDK_DIR}")
-    juce_set_vst2_sdk_path($ENV{VST2_SDK_DIR})
-else()
-    MESSAGE(STATUS "Not building with VST2")
-endif()
+CPMAddPackage(
+    GIT_REPOSITORY "git@github.com:eiosisorg/vst2-sdk.git"
+    GIT_TAG master
+)
+juce_set_vst2_sdk_path("${vst2-sdk_SOURCE_DIR}")
 
 juce_add_gui_app(pluginval
     BUNDLE_ID                       com.Tracktion.pluginval
@@ -147,12 +146,8 @@ if(PLUGINVAL_VST3_VALIDATOR)
     source_group("Source/vst3validator" FILES ${VST3ValidatorFiles})
 endif()
 
-if (DEFINED ENV{VST2_SDK_DIR})
-    target_compile_definitions(pluginval PRIVATE
-        JUCE_PLUGINHOST_VST=1)
-endif()
-
 target_compile_definitions(pluginval PRIVATE
+    JUCE_PLUGINHOST_VST=1
     JUCE_PLUGINHOST_AU=1
     JUCE_PLUGINHOST_LADSPA=1
     JUCE_PLUGINHOST_VST3=1
