@@ -4,4 +4,4 @@
 	branch = develop
 [submodule "modules/vst2-sdk"]
 	path = modules/vst2-sdk
-	url = https://github.com/eiosisorg/vst2-sdk
+	url = ssh://github.com/eiosisorg/vst2-sdk
