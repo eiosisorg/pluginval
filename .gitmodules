@@ -1,7 +1,7 @@
 [submodule "modules/juce"]
 	path = modules/juce
 	url = https://github.com/juce-framework/JUCE
-	branch = develop
+	branch = 29213e07a1ec8edf4be13f14c08dedf3dd101841
 [submodule "modules/vst2-sdk"]
 	path = modules/vst2-sdk
 	url = ssh://git@github.com/eiosisorg/vst2-sdk
